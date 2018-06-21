@@ -1,0 +1,2 @@
+/usr/bin/ar qc libshv3dengine.a  CMakeFiles/shv3dengine.dir/GameContainer.cpp.o CMakeFiles/shv3dengine.dir/Window.cpp.o CMakeFiles/shv3dengine.dir/States/StateManager.cpp.o CMakeFiles/shv3dengine.dir/Graphics/Graphics.cpp.o CMakeFiles/shv3dengine.dir/Graphics/Vulkan/ValidationLayers.cpp.o
+/usr/bin/ranlib libshv3dengine.a

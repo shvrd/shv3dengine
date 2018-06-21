@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/thekatze/CLionProjects/shv3dengine/src/GameContainer.h
+Window.h
+/home/thekatze/CLionProjects/shv3dengine/src/Window.h
+Graphics/Graphics.h
+/home/thekatze/CLionProjects/shv3dengine/src/Graphics/Graphics.h
+
+/home/thekatze/CLionProjects/shv3dengine/src/Graphics/Graphics.h
+vulkan/vulkan.h
+-
+
+/home/thekatze/CLionProjects/shv3dengine/src/Types.h
+
+/home/thekatze/CLionProjects/shv3dengine/src/Window.h
+GLFW/glfw3.h
+-
+Types.h
+/home/thekatze/CLionProjects/shv3dengine/src/Types.h
+
+/home/thekatze/CLionProjects/shv3dengine/src/main.cpp
+GLFW/glfw3.h
+-
+iostream
+-
+GameContainer.h
+/home/thekatze/CLionProjects/shv3dengine/src/GameContainer.h
+
