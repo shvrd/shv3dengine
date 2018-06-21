@@ -1,6 +1,0 @@
-[2018-06-16 22:06:07.427] [Engine] [info] Logger initialized
-[2018-06-16 22:06:07.427] [Engine] [info] Initializing SDL
-[2018-06-16 22:06:07.546] [Engine] [info] Creating SDL_GL Context
-[2018-06-16 22:06:07.553] [Engine] [info] Initializing GLEW
-[2018-06-16 22:06:07.556] [Engine] [info] Initializing OpenGL
-[2018-06-16 22:06:07.556] [Engine] [info] OpenGL Version: 4.6.0 NVIDIA 396.24

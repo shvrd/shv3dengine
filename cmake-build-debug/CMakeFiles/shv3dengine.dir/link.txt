@@ -1,2 +1,0 @@
-/usr/bin/ar qc libshv3dengine.a  CMakeFiles/shv3dengine.dir/GameContainer.cpp.o
-/usr/bin/ranlib libshv3dengine.a
