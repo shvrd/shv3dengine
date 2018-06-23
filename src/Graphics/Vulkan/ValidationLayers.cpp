@@ -3,14 +3,16 @@
 //
 
 #include <stdint-gcc.h>
-#include <vulkan/vulkan.h>
 #include <iostream>
 #include <cstring>
 #include "ValidationLayers.h"
 
+VkDebugReportCallbackEXT ValidationLayers::callback = nullptr;
+
 const std::vector<const char*> ValidationLayers::enabledValidationLayers = {
         "VK_LAYER_LUNARG_standard_validation"
 };
+
 
 bool ValidationLayers::supported() {
     uint32_t  layerCount;
@@ -36,4 +38,20 @@ bool ValidationLayers::supported() {
         }
     }
     return true;
+}
+
+VkResult ValidationLayers::createDebugReportCallbackEXT(VkInstance instance, const VkDebugReportCallbackCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback) {
+    auto func = (PFN_vkCreateDebugReportCallbackEXT) vkGetInstanceProcAddr(instance, "vkCreateDebugReportCallbackEXT");
+    if (func != nullptr) {
+        return func(instance, pCreateInfo, pAllocator, pCallback);
+    } else {
+        return VK_ERROR_EXTENSION_NOT_PRESENT;
+    }
+}
+
+void ValidationLayers::destroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, const VkAllocationCallbacks* pAllocator) {
+    auto func = (PFN_vkDestroyDebugReportCallbackEXT) vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT");
+    if (func != nullptr) {
+        func(instance, callback, pAllocator);
+    }
 }

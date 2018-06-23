@@ -45,6 +45,7 @@ Graphics::Graphics() {
     createInfo.ppEnabledExtensionNames = requiredExtensions.data();
 
     if (ValidationLayers::enableValidationLayers) {
+        std::cout << "Enabled Validation Layers: " << ValidationLayers::enabledValidationLayers.size() << std::endl;
         createInfo.enabledLayerCount = static_cast<uint32_t>(ValidationLayers::enabledValidationLayers.size());
         createInfo.ppEnabledLayerNames = ValidationLayers::enabledValidationLayers.data();
     } else {
@@ -55,7 +56,6 @@ Graphics::Graphics() {
 
     if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
         //Error, Vulkan could not be initialized
-
         exit(2);
     }
 
@@ -85,8 +85,20 @@ Graphics::Graphics() {
         }
         std::cout << std::endl;
     }
+
+    VkDebugReportCallbackCreateInfoEXT callbackCreateInfo = {};
+    callbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+    callbackCreateInfo.flags = VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT;
+    callbackCreateInfo.pfnCallback = ValidationLayers::debugCallback;
+
+    if (ValidationLayers::createDebugReportCallbackEXT(instance, &callbackCreateInfo, nullptr, &ValidationLayers::callback) != VK_SUCCESS) {
+        exit(4);
+    }
+
 }
 
 Graphics::~Graphics() {
+    ValidationLayers::destroyDebugReportCallbackEXT(instance, ValidationLayers::callback, nullptr);
+
     vkDestroyInstance(this->instance, nullptr);
 }

@@ -9,6 +9,8 @@ GameContainer::GameContainer() : window(nullptr) {
 }
 
 GameContainer::~GameContainer() {
+    this->graphics->~Graphics();
+
     delete window;
     window = nullptr;
 }
@@ -25,4 +27,6 @@ void GameContainer::doGameLoop() {
     while (!this->window->shouldClose()){
         glfwPollEvents();
     }
+
+    this->~GameContainer();
 }
