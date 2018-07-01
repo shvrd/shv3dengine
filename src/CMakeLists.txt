@@ -1,4 +1,4 @@
-set(engine_base_src GameContainer.h GameContainer.cpp Window.cpp Window.h Types.h States/StateManager.cpp States/StateManager.h Graphics/Graphics.cpp Graphics/Graphics.h Graphics/Vulkan/ValidationLayers.cpp Graphics/Vulkan/ValidationLayers.h)
+set(engine_base_src GameContainer.h GameContainer.cpp Window.cpp Window.h Types.h States/StateManager.cpp States/StateManager.h Graphics/Graphics.cpp Graphics/Graphics.h Graphics/Vulkan/ValidationLayers.cpp Graphics/Vulkan/ValidationLayers.h Graphics/Vulkan/VulkanUtil.cpp Graphics/Vulkan/VulkanUtil.h)
 
 add_library(shv3dengine ${engine_base_src})
 

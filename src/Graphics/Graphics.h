@@ -10,6 +10,7 @@
 
 class Graphics {
     VkInstance instance;
+    VkPhysicalDevice physicalDevice;
 
 public:
     Graphics();

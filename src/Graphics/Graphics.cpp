@@ -9,8 +9,9 @@
 #include <cstring>
 #include "Graphics.h"
 #include "Vulkan/ValidationLayers.h"
+#include "Vulkan/VulkanUtil.h"
 
-Graphics::Graphics() {
+Graphics::Graphics() : instance(VK_NULL_HANDLE), physicalDevice(VK_NULL_HANDLE) {
     //Check for Validation Layer support
     if (ValidationLayers::enableValidationLayers && !ValidationLayers::supported()) {
         //ValidationLayers requested, but not supported
@@ -94,6 +95,25 @@ Graphics::Graphics() {
     if (ValidationLayers::createDebugReportCallbackEXT(instance, &callbackCreateInfo, nullptr, &ValidationLayers::callback) != VK_SUCCESS) {
         exit(4);
     }
+
+    //Pick physical device
+    uint32_t deviceCount = 0;
+    vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+
+    std::vector<VkPhysicalDevice> physicalDevices(deviceCount);
+    vkEnumeratePhysicalDevices(instance, &deviceCount, physicalDevices.data());
+
+    for (const auto& device : physicalDevices) {
+        if (VulkanUtil::isDeviceSuitable(device)) {
+            physicalDevice = device;
+            break;
+        }
+    }
+
+    if (physicalDevice == VK_NULL_HANDLE) {
+        exit(5);
+    }
+
 
 }
 
